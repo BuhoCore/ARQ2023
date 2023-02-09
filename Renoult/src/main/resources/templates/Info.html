@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}"> <!--  -->
+    <title th:text="${titulo}"></title>
+</head>
+<body>
+    <h1 th:text="${titulo}">Informacion</h1>
+
+    <p> En Renault México queremos brindar mejores propuestas de movilidad a nuestros clientes y socios de negocio,<br>
+     ecuaciones ganadoras en relación costo- beneficio, que mejoren su experiencia detrás del volante.” </p>
+
+    <span th:text="${carro.marca}"></span>
+    <span th:text="${carro.modelo}"></span>
+    <span th:text="${carro.anno}"></span>
+    <span th:text="${carro.color}"></span>
+
+    <br>
+    <br>
+
+    <div><button class="enlace" role="link" onclick="window.location.href='http://localhost:8080/app/home'" >Regresar al inicio</button></div>
+    <br>
+    <br>
+    <div><button class="enlace" role="link" onclick="window.location.href='http://localhost:8080/app/list'" >Ver Lista de Autos</button></div>
+
+    <br>
+    <br>
+    <form action="/my-handling-form-page" method="post">
+        <li>
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="user_name">
+        </li>
+
+        <li>
+            <label for="name">Apellido:</label>
+            <input type="text" id="lastnaem" name="user_name">
+        </li>
+        <li>
+            <label for="name">password:</label>
+            <input type="password" id="l" name="user_name">
+        </li>
+
+    </form>
+
+</body>
+</html>

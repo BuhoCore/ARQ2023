@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}"> <!--  -->
+    <title th:text="${titulo}"></title>
+</head>
+<body>
+<h1 th:text="${titulo}">Informacion</h1>
+
+<span th:if="${carros.size()==0}">No hay lista</span>
+
+<table th:if="${carros.size()>0}">
+    <thead>
+        <tr>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Año</th>
+            <th>Color</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="carros: ${carros}">
+            <td th:text="${carros.marca}"></td>
+            <td th:text="${carros.modelo}"></td>
+            <td th:text="${carros.anno}"></td>
+            <td th:text="${carros.color}"></td>
+        </tr>
+    </tbody>
+</table>
+
+<br>
+<br>
+
+<div><button class="enlace" role="link" onclick="window.location.href='http://localhost:8080/app/home'" >Regresar al inicio</button></div>
+<br>
+<br>
+<div><button class="enlace" role="link" onclick="window.location.href='http://localhost:8080/app/info'" >Volver Atras</button></div>
+</body>
+</html>

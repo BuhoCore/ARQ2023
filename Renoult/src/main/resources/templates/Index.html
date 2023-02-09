@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/style.css}"> <!--  -->
+
+    <nav>
+        <img th:src="@{/imagenes/logo.jpg}" alt="" width="200" height="90" button class="enlace" role="link" onclick="window.location='https://www.youtube.com/watch?v=x2rQzv8OWEY'"></button>
+        <div class="barnav">
+
+
+            <div><button class="enlace" role="link" onclick="window.location.href='http://localhost:8080/app/info'" >Informacion</button></div>
+            <div><button class="enlace" role="link" onclick="window.location.href='http://localhost:8080/app/venta'" >Venta</button></div>
+            <div><button class="enlace" role="link" onclick="window.location.href='http://localhost:8080/app/compra'" >Compra</button></div>
+            <div><button class="enlace" role="link" onclick="window.location.href='https://music.apple.com/us/playlist/sleep/pl.u-xlyNqLNFoKMq5e'" >Yasmine</button></div>
+        </div>
+    </nav>
+    <div class="contenido">
+    </div>
+    <h1 style="color:red;text-align:center;">Renoult 18 GTX 2 Litro</h1>
+
+<title th:text="${titulo}">Index</title>
+</head>
+<body>
+<FONT SIZE=6 >Datos</FONT>
+<h1 th:text="${titulo}"></h1>
+<div align = "right">
+<p>
+<img th:src="@{/imagenes/renault_18_gtx_2_litros _1985_1.jpeg}" alt="" width="650" height="380" align="left"/>
+</p>
+</div>
+
+<div align = "center">
+    <p style="color:rgb(255, 0, 212);">Contenido</p>
+
+<table>
+
+    <tr>
+        <th>Marca</th>
+        <td>||</td>
+        <td>Renault</td>
+
+    </tr>
+    <tr>
+        <th>Modelo</th>
+        <td>||</td>
+        <td>R-18 GTX</td>
+    </tr>
+    <tr>
+        <th>Año</th>
+        <td>||</td>
+        <td>1985</td>
+    </tr>
+    <tr>
+        <th>Color</th>
+        <td>||</td>
+        <td>Blanco Y Negro</td>
+    </tr>
+    <tr>
+        <th>Puertas</th>
+        <td>||</td>
+        <td>4</td>
+    </tr>
+    <tr>
+        <th>Motor</th>
+        <td>||</td>
+        <td>4 CILINDROS 2.0</td>
+    </tr>
+    <tr>
+        <th>Tipo de combustible</th>
+        <td>||</td>
+        <td>Gasolina</td>
+    </tr>
+    <tr>
+        <th>Kilómetros</th>
+        <td>||</td>
+        <td>???</td>
+    </tr>
+    <tr>
+        <th>Transmisión</th>
+        <td>||</td>
+        <td>Manual</td>
+    </tr>
+    <tr>
+        <th>Versión</th>
+        <td>||</td>
+        <td>R18</td>
+    </tr>
+</table>
+</div>
+<div align = "center">
+    <button class="btn" type="submit">Agregar</button>
+    <button class="btn" type="submit">No Gracias</button>
+</div>
+
+
+<br> </br>
+<FONT SIZE=6 >Historia</FONT>
+<h1>Mexico</h1>
+
+<h2>Renault 18</h2>
+<p>El Renault 18 fue presentado en México a finales de 1978 y empezó su comercialización al año siguiente.</p>
+<p>Dentro de la gama mexicana tuvo la misión de reemplazar al Renault 12 TS, del cual heredó el motor de 1647 cc y 79 HP, aunque, a diferencia de este, además del sedán, se comercializó también una versión vagoneta (familiar en España).
+<p>El 18 mexicano se caracterizó por tener parachoques específicas, más grandes, llanta de aleación de 13 pulgadas con tres birlos, y un frontal especial para este mercado, con dobles faros redondos.
+<p>Este fue el primer Renault en ser comercializado con una transmisión automática en México, llevando sus primeros años una transmisión manual de 4 velocidades asociado al motor 1.6 litros, como equipo de serie.
+<p>Se comercializó con dos niveles de acabado, equivalentes a los TS y GTS europeos, aunque se llamaban simplemente "equipado" o "Plus" y "semiequipado".
+<p>En esta primera etapa apenas se produjeron cambios hasta 1982.
+
+<p>Para 1983, el modelo recibe el frontal de la versión norteamericana, (con faros rectangulares montados en biseles descubiertos, a diferencia de los de tipo europeo, que llevan cubierta de cristal), aunque conservando las defensas anteriores.
+<p>A fines de 1993, el Renault 18 1.6 equipa nuevas defensas tipo europeo envolventes.
+<p>En marzo de 1984, las nuevas versiones Custom, TX y GTX, montaban un motor de 2.0 litros y 95 CV, con una transmisión manual de 5 velocidades o la automática de 3, interiores mejorados y llantas con cuatro birlos (el GTX tenía rines de aleación, mientras que el TX equipaba rines de acero).
+<p>Renault 18 México entre (1978-1994)
+<p>El Renault 18 mexicano continuó su producción hasta marzo de 1986, fecha en que Renault se va de México.
+
+
+
+<div class="wrapper">
+    <div class="slider" id="slider">
+        <ul class="slides">
+            <li class="slide" id="slide1">
+                <a href="#">
+                    <p class="caption">Amor</p>
+                    <img src="/imagenes/renault_18_gtx_2_litros _1985_1.jpeg" alt="photo 1">
+                </a>
+            </li>
+            <li class="slide" id="slide2">
+                <a href="#">
+                    <p class="caption">Servicio</p>
+                    <img src="/imagenes/renault_18_gtx_2_litros _1985_2.jpeg" alt="photo 2">
+                </a>
+            </li>
+            <li class="slide" id="slide3">
+                <a href="#">
+                    <p class="caption">Info</p>
+                    <img src="/imagenes/renault_18_gtx_2_litros _1985_3.jpeg" alt="photo 3">
+                </a>
+            </li>
+            <li class="slide" id="slide4">
+                <a href="#">
+                    <p class="caption">Comprar</p>
+                    <img src="/imagenes/renault_18_gtx_2_litros _1985_4.jpeg" alt="photo 4">
+                </a>
+            </li>
+            <li class="slide" id="slide5">
+                <a href="#">
+                    <p class="caption">Ver</p>
+                    <img src="/imagenes/renault_18_gtx_2_litros _1985_5.jpeg" alt="photo 5">
+                </a>
+            </li>
+            <li class="slide">
+                <a href="#">
+                    <p class="caption">GTX 18</p>
+                    <img src="/imagenes/renault_18_gtx_parte_delantera.jpeg" alt="photo 1">
+                </a>
+            </li>
+        </ul>
+        <ul class="slider-controler">
+            <li><a href="#slide1">&bullet;</a></li>
+            <li><a href="#slide2">&bullet;</a></li>
+            <li><a href="#slide3">&bullet;</a></li>
+            <li><a href="#slide4">&bullet;</a></li>
+            <li><a href="#slide5">&bullet;</a></li>
+        </ul>
+    </div>
+</div>
+<div><button class="enlace" role="link" onclick="window.location.href='http://localhost:8080/app/home'" >Regresar al Arriba</button></div>
+</body>
+</html>
