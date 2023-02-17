@@ -9,9 +9,9 @@ import uia.com.api.inventario.dto.PartidaDTO;
 import java.util.ArrayList;
 import java.util.List;
 
-@Node("Categoria")
-public class Categoria {
 
+@Node("Partida")
+public class Partida {
     @Id
     private String id;
     @Property("name")
@@ -29,29 +29,31 @@ public class Categoria {
     private String nameCategoria;
     private String nameLote;
     private String cantidad;
-    @Relationship(type = "Contiene")
+    private String idProveedor;
+    private String minimoNivel;
+    @Relationship(type = "CONTIENE")
     private ArrayList<Subpartida> subpartidas = new ArrayList<Subpartida>();
-    @Relationship(type = "AGREGO  MAS")
-    private ArrayList<Item> items = new ArrayList<Item>();
 
-    public Categoria(String id, String name, String estatus, String clase, String descripcion, String idPartida, String idSubpartida, String nameSubpartida, String idCategoria, String nameCategoria, String nameLote, String cantidad, ArrayList<Subpartida> subpartidas, ArrayList<Item> items) {
+
+    public Partida(String id, String name, String descripcion, String estatus, String clase, String fechaIngreso, String nameLote, String idPartida,
+                   String idSubpartida, String nameSubpartida, String idCategoria, String nameCategoria, String cantidad, String idProveedor, String minimoNivel, List<PartidaDTO> partidas)
+    {
         this.id = id;
-        this.name = name;
+        this.name = id;
         this.estatus = estatus;
         this.clase = clase;
         this.descripcion = descripcion;
-        this.idPartida = idPartida;
         this.idSubpartida = idSubpartida;
         this.nameSubpartida = nameSubpartida;
         this.idCategoria = idCategoria;
         this.nameCategoria = nameCategoria;
         this.nameLote = nameLote;
         this.cantidad = cantidad;
-        this.subpartidas = subpartidas;
-        this.items = items;
+        this.idProveedor = idProveedor;
+        this.minimoNivel = minimoNivel;
     }
 
-    public Categoria() {
+    public Partida() {
     }
 
     public String getId() {
@@ -86,12 +88,21 @@ public class Categoria {
         this.clase = clase;
     }
 
+
     public String getDescripcion() {
         return descripcion;
     }
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public ArrayList<Subpartida> getSubpartidas() {
+        return subpartidas;
+    }
+
+    public void setSubpartidas(ArrayList<Subpartida> subpartidas) {
+        this.subpartidas = subpartidas;
     }
 
     public String getIdPartida() {
@@ -150,19 +161,20 @@ public class Categoria {
         this.cantidad = cantidad;
     }
 
-    public ArrayList<Subpartida> getSubpartidas() {
-        return subpartidas;
+
+    public String getIdProveedor() {
+        return idProveedor;
     }
 
-    public void setSubpartidas(ArrayList<Subpartida> subpartidas) {
-        this.subpartidas = subpartidas;
+    public void setIdProveedor(String idProveedor) {
+        this.idProveedor = idProveedor;
     }
 
-    public ArrayList<Item> getItems() {
-        return items;
+    public String getMinimoNivel() {
+        return minimoNivel;
     }
 
-    public void setItems(ArrayList<Item> items) {
-        this.items = items;
+    public void setMinimoNivel(String minimoNivel) {
+        this.minimoNivel = minimoNivel;
     }
 }

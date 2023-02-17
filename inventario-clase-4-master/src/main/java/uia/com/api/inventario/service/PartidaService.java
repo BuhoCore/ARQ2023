@@ -63,7 +63,7 @@ public class PartidaService {
                     entityPartida.setId(id);
                     String idLote = entityPartida.getNameLote();
 
-                    if (this.repositoryLote.existsById(idLote)) {
+                    if (this.repositoryLote.existsById(entityPartida.getNameLote())) {
                         agregaLote(entityPartida);
                     }
 
@@ -153,7 +153,7 @@ public class PartidaService {
 
         if (!this.repositoryCategoria.existsById(id))
         {
-            Categoria categoria = new Categoria( );
+            Categoria categoria = new Categoria();
             Set<ConstraintViolation<Categoria>> violations = validator.validate(categoria);
             if (!violations.isEmpty()) {
                 throw new ConstraintViolationException(violations);
@@ -224,4 +224,5 @@ public class PartidaService {
         }
 
     }
+
 }

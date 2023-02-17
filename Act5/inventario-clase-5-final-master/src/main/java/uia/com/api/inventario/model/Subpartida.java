@@ -15,20 +15,18 @@ public class Subpartida {
     private String estatus;
     @Property("clase")
     private String clase;
-    @Property("descripcion")
-    private String descripcion;
+    @Property("idSubpartida")
+    private String idSubpartida;
     @Relationship(type = "CONTIENE")
     private ArrayList<Categoria> categorias = new ArrayList<Categoria>();
-    @Relationship(type = "AGREGADO")
-    private ArrayList<Item> items = new ArrayList<Item>();
 
-    public Subpartida(String id, String name, String descripcion, String estatus, String clase, String fechaIngreso, String nameEmbalaje)
+    public Subpartida(String id, String name, String idSubpartida, String estatus, String clase, String fechaIngreso, String nameEmbalaje)
     {
         this.id = id;
-        this.name = name;
+        this.name = id;
         this.estatus = estatus;
         this.clase = clase;
-        this.descripcion = descripcion;
+        this.idSubpartida = idSubpartida;
     }
 
     public Subpartida() {
@@ -67,15 +65,14 @@ public class Subpartida {
     }
 
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getIdSubpartida() {
+        return idSubpartida;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setIdSubpartida(String idSubpartida) {
+        this.idSubpartida = idSubpartida;
     }
 
-    /*
     public ArrayList<Categoria> getCategorias() {
         return categorias;
     }
@@ -84,13 +81,6 @@ public class Subpartida {
         this.categorias = categorias;
     }
 
-     */
 
-    public ArrayList<Item> getItems() {
-        return items;
-    }
 
-    public void setItems(ArrayList<Item> items) {
-        this.items = items;
-    }
 }

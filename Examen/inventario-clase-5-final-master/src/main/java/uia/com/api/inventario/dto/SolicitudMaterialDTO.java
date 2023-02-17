@@ -1,57 +1,53 @@
-package uia.com.api.inventario.model;
+package uia.com.api.inventario.dto;
 
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Property;
 import org.springframework.data.neo4j.core.schema.Relationship;
-import uia.com.api.inventario.dto.PartidaDTO;
+import uia.com.api.inventario.dto.ItemDTO;
+import uia.com.api.inventario.model.Categoria;
+import uia.com.api.inventario.model.Item;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Node("Categoria")
-public class Categoria {
 
-    @Id
+public class SolicitudMaterialDTO {
     private String id;
-    @Property("name")
     private String name;
-    @Property("estatus")
     private String estatus;
-    @Property("clase")
     private String clase;
-    @Property("descripcion")
     private String descripcion;
-    private String idPartida;
-    private String idSubpartida;
-    private String nameSubpartida;
+    private String idItem;
+    private String nameItem;
     private String idCategoria;
     private String nameCategoria;
     private String nameLote;
     private String cantidad;
-    @Relationship(type = "Contiene")
-    private ArrayList<Subpartida> subpartidas = new ArrayList<Subpartida>();
-    @Relationship(type = "AGREGO  MAS")
-    private ArrayList<Item> items = new ArrayList<Item>();
+    private String idProveedor;
+    private String minimoNivel;
+    private ArrayList<CategoriaDTO> categorias = new ArrayList<CategoriaDTO>();
 
-    public Categoria(String id, String name, String estatus, String clase, String descripcion, String idPartida, String idSubpartida, String nameSubpartida, String idCategoria, String nameCategoria, String nameLote, String cantidad, ArrayList<Subpartida> subpartidas, ArrayList<Item> items) {
+
+    public SolicitudMaterialDTO(String id, String name, String descripcion, String estatus, String clase, String fechaIngreso, String nameLote, String idItem,
+                                String nameItem, String idCategoria, String nameCategoria, String cantidad, String idProveedor, String minimoNivel, List<ItemDTO> partidas)
+    {
         this.id = id;
-        this.name = name;
+        this.name = id;
         this.estatus = estatus;
         this.clase = clase;
         this.descripcion = descripcion;
-        this.idPartida = idPartida;
-        this.idSubpartida = idSubpartida;
-        this.nameSubpartida = nameSubpartida;
+        this.idItem = idItem;
+        this.nameItem = nameItem;
         this.idCategoria = idCategoria;
         this.nameCategoria = nameCategoria;
         this.nameLote = nameLote;
         this.cantidad = cantidad;
-        this.subpartidas = subpartidas;
-        this.items = items;
+        this.idProveedor = idProveedor;
+        this.minimoNivel = minimoNivel;
     }
 
-    public Categoria() {
+    public SolicitudMaterialDTO() {
     }
 
     public String getId() {
@@ -86,6 +82,7 @@ public class Categoria {
         this.clase = clase;
     }
 
+
     public String getDescripcion() {
         return descripcion;
     }
@@ -94,28 +91,28 @@ public class Categoria {
         this.descripcion = descripcion;
     }
 
-    public String getIdPartida() {
-        return idPartida;
+    public ArrayList<CategoriaDTO> getCategorias() {
+        return categorias;
     }
 
-    public void setIdPartida(String idPartida) {
-        this.idPartida = idPartida;
+    public void setCategorias(ArrayList<CategoriaDTO> categorias) {
+        this.categorias = categorias;
     }
 
-    public String getIdSubpartida() {
-        return idSubpartida;
+    public String getIdItem() {
+        return idItem;
     }
 
-    public void setIdSubpartida(String idSubpartida) {
-        this.idSubpartida = idSubpartida;
+    public void setIdItem(String idItem) {
+        this.idItem = idItem;
     }
 
-    public String getNameSubpartida() {
-        return nameSubpartida;
+    public String getNameItem() {
+        return nameItem;
     }
 
-    public void setNameSubpartida(String nameSubpartida) {
-        this.nameSubpartida = nameSubpartida;
+    public void setNameItem(String nameItem) {
+        this.nameItem = nameItem;
     }
 
     public String getIdCategoria() {
@@ -150,19 +147,20 @@ public class Categoria {
         this.cantidad = cantidad;
     }
 
-    public ArrayList<Subpartida> getSubpartidas() {
-        return subpartidas;
+
+    public String getIdProveedor() {
+        return idProveedor;
     }
 
-    public void setSubpartidas(ArrayList<Subpartida> subpartidas) {
-        this.subpartidas = subpartidas;
+    public void setIdProveedor(String idProveedor) {
+        this.idProveedor = idProveedor;
     }
 
-    public ArrayList<Item> getItems() {
-        return items;
+    public String getMinimoNivel() {
+        return minimoNivel;
     }
 
-    public void setItems(ArrayList<Item> items) {
-        this.items = items;
+    public void setMinimoNivel(String minimoNivel) {
+        this.minimoNivel = minimoNivel;
     }
 }

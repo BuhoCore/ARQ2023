@@ -1,57 +1,51 @@
-package uia.com.api.inventario.model;
+package uia.com.api.inventario.dto;
 
-import org.springframework.data.neo4j.core.schema.Id;
-import org.springframework.data.neo4j.core.schema.Node;
-import org.springframework.data.neo4j.core.schema.Property;
-import org.springframework.data.neo4j.core.schema.Relationship;
-import uia.com.api.inventario.dto.PartidaDTO;
+import uia.com.api.inventario.model.Subpartida;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Node("Categoria")
-public class Categoria {
 
-    @Id
+public class PartidaDTO {
+    private  String minimoNivel;
     private String id;
-    @Property("name")
     private String name;
-    @Property("estatus")
-    private String estatus;
-    @Property("clase")
-    private String clase;
-    @Property("descripcion")
     private String descripcion;
+    private String estatus;
+    private String clase;
+    private String fechaIngreso;
+    private String idLote;
+    private String nameLote;
     private String idPartida;
     private String idSubpartida;
     private String nameSubpartida;
     private String idCategoria;
     private String nameCategoria;
-    private String nameLote;
     private String cantidad;
-    @Relationship(type = "Contiene")
-    private ArrayList<Subpartida> subpartidas = new ArrayList<Subpartida>();
-    @Relationship(type = "AGREGO  MAS")
-    private ArrayList<Item> items = new ArrayList<Item>();
+    private String idProveedor;
+    private List<PartidaDTO> partidas = new ArrayList<PartidaDTO>();
+    private List<Subpartida> subpartidas = new ArrayList<Subpartida>();
 
-    public Categoria(String id, String name, String estatus, String clase, String descripcion, String idPartida, String idSubpartida, String nameSubpartida, String idCategoria, String nameCategoria, String nameLote, String cantidad, ArrayList<Subpartida> subpartidas, ArrayList<Item> items) {
-        this.id = id;
+    public PartidaDTO() {
+    }
+
+    public PartidaDTO(String id, String name, String descripcion, String estatus, String clase, String fechaIngreso, String nameLote, String idPartida,
+                      String idSubpartida, String nameSubpartida, String idCategoria, String nameCategoria, String cantidad, String minimoNivel, List<PartidaDTO> partidas)
+    {
+        this.id = name;
         this.name = name;
+        this.descripcion = descripcion;
         this.estatus = estatus;
         this.clase = clase;
-        this.descripcion = descripcion;
-        this.idPartida = idPartida;
+        this.partidas = partidas;
         this.idSubpartida = idSubpartida;
         this.nameSubpartida = nameSubpartida;
         this.idCategoria = idCategoria;
         this.nameCategoria = nameCategoria;
+        this.idLote = idLote;
         this.nameLote = nameLote;
         this.cantidad = cantidad;
-        this.subpartidas = subpartidas;
-        this.items = items;
-    }
-
-    public Categoria() {
+        this.minimoNivel = minimoNivel;
     }
 
     public String getId() {
@@ -94,6 +88,30 @@ public class Categoria {
         this.descripcion = descripcion;
     }
 
+    public String getFechaIngreso() {
+        return fechaIngreso;
+    }
+
+    public void setFechaIngreso(String fechaIngreso) {
+        this.fechaIngreso = fechaIngreso;
+    }
+
+    public String getNameLote() {
+        return nameLote;
+    }
+
+    public void setNameLote(String nameLote) {
+        this.nameLote = nameLote;
+    }
+
+    public List<PartidaDTO> getPartidas() {
+        return partidas;
+    }
+
+    public void setPartidas(List<PartidaDTO> partidas) {
+        this.partidas = partidas;
+    }
+
     public String getIdPartida() {
         return idPartida;
     }
@@ -134,14 +152,6 @@ public class Categoria {
         this.nameCategoria = nameCategoria;
     }
 
-    public String getNameLote() {
-        return nameLote;
-    }
-
-    public void setNameLote(String nameLote) {
-        this.nameLote = nameLote;
-    }
-
     public String getCantidad() {
         return cantidad;
     }
@@ -150,19 +160,39 @@ public class Categoria {
         this.cantidad = cantidad;
     }
 
-    public ArrayList<Subpartida> getSubpartidas() {
+    public String getNamePartida() {
+        return this.getName();
+    }
+
+    public String getIdProveedor() {
+        return idProveedor;
+    }
+
+    public void setIdProveedor(String idProveedor) {
+        this.idProveedor = idProveedor;
+    }
+
+    public String getMinimoNivel() {
+        return minimoNivel;
+    }
+
+    public void setMinimoNivel(String minimoNivel) {
+        this.minimoNivel = minimoNivel;
+    }
+
+    public String getIdLote() {
+        return idLote;
+    }
+
+    public void setIdLote(String idLote) {
+        this.idLote = idLote;
+    }
+
+    public List<Subpartida> getSubpartidas() {
         return subpartidas;
     }
 
-    public void setSubpartidas(ArrayList<Subpartida> subpartidas) {
+    public void setSubpartidas(List<Subpartida> subpartidas) {
         this.subpartidas = subpartidas;
-    }
-
-    public ArrayList<Item> getItems() {
-        return items;
-    }
-
-    public void setItems(ArrayList<Item> items) {
-        this.items = items;
     }
 }
