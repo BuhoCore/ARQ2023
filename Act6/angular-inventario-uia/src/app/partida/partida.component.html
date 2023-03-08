@@ -1,0 +1,54 @@
+<div id = "table">
+<table>
+<tr>
+<th>ID</th>
+<th>Id Partida </th>
+<th>Id Subpartida </th>
+<th>Id Categoria </th>
+<th>Id Proveedor </th>
+<th>Id Minimo Nivel </th>
+<th> Nombre Categoria </th>
+<th>Nombre de Subpartida </th>
+<th>Estatus </th>
+<th>Accion </th>
+</tr>
+<tr *ngFor="let  data of partidas   ">
+<td style="width: 5%;"> {{data.id}}</td>
+<td style="width: 5%;"> {{data.idPartida}}</td>
+<td style="width: 5%;"> {{data.name}}</td>
+<td style="width: 8%;"> {{data.idSubpartida}}</td>
+<td style="width: 10%;"> {{data.nameSubpartida}}</td>
+
+
+<td style="width: 10%;"> {{data.idCategoria}}</td>
+<td style="width: 10%;"> {{data.nameCategoria}}</td>
+
+<td style="width: 10%;"> {{data.nameLote}}</td>
+<td style="width: 10%;"> {{data.cantidad}}</td>
+<td style="width: 10%;"> {{data.minimoNivel}}</td>
+<td style="width: 10%;"> {{data.idProveedor}}</td>
+
+
+
+
+
+
+</tr>
+</table>
+</div>
+<div>
+<H2>AGREGA  Partidas</H2>
+
+<div>
+<form appearance="fill">
+    <label>Nombre</label>
+    <input INput for="new-partida" #partidaName>
+    </form>
+
+    <form appearance="fill">
+        <label>id:</label>
+        <input Input for="new-partida" #partidaId>
+        </form>
+</div>
+
+</div>
