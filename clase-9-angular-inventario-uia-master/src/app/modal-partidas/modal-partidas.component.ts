@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DatosService } from '../datos.service'
 import { IPartida }  from '../../assets/IPartida'
 import { Router } from '@angular/router';
+import { ModalSubpartidasComponent } from '../modal-subpartidas/modal-subpartidas.component';
 
 @Component({
   selector: 'app-modal-partidas',
@@ -28,6 +29,7 @@ export class ModalPartidasComponent implements OnInit  {
   public totalRows = 0;
 
   selectedPartida?: IPartida;
+  dialog: any;
  
    constructor(public datosPartida:DatosService,  public modal: MatDialog, private Nav: Router) 
    {     
@@ -51,6 +53,8 @@ export class ModalPartidasComponent implements OnInit  {
    openDialog(id:any){
     console.log(id)
   }
+
+
 
   GiveDataForm(id: any,accion:string) {
     this.Nav.navigate(['solicitudMaterial']);
