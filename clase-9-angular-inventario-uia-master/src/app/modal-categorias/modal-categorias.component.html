@@ -1,5 +1,4 @@
-<p>modal-subpartidas works!</p>
-
+<p>modal-categorias works!</p>
 
 <div id="table" class="container marginT">
     <table style="width: 100%;"
@@ -90,24 +89,30 @@
             </div>
           </th>
           <th style="font-size: 13px;">Acción</th>
-
-       
-        
         </tr>
       </thead>
   
       <tbody>
-        <tr *ngFor="let data of subpartidas  ">
-          <td style="width: 5%;">{{data.idSubpartida }}</td>
-          <td style="width: 8%;">{{data.id}}</td>
-          <td style="width: 10%;">{{data.name}} </td>
+        <tr *ngFor="let data of categorias  ">
+          <td style="width: 5%;">{{data.id }}</td>
+            <td style="width: 5%;">{{data.idPartida}}</td>
+            <td style="width: 5%;">{{data.idSubpartida}}</td>
+          <td style="width: 10%;">{{data.idCategoria}}</td>
+          <td style="width: 10%;" >{{data.idProveedor}} </td>
+          <td style="width: 10%;">{{data.minimoNivel}} </td>
+          <td style="width: 10%;">{{data.nameCategoria}} </td>
+            <td style="width: 10%;">{{data.nameSubpartida}} </td>
 
-          <td style="width: 15%;">  
-           
-            <button (click)="openDialogNew4(data.idSubpartida)" class="btn btn-primary btn-sm " type="button">
-              <span class="glyphicon glyphicon-search"></span><mat-icon>shopping_cart</mat-icon>
-            </button>    
-           
+          
+  
+          <td style="width: 15%;">                 
+        
+            <button (click)="openDialogNew5(data.id)" class="btn btn-primary btn-sm " type="button">
+                <span class="glyphicon glyphicon-search"></span><mat-icon>shopping_cart</mat-icon>
+              </button>    
+             
+        
+                  
             </td>
         </tr>
       </tbody>

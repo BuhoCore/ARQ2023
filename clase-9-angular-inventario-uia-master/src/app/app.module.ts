@@ -16,6 +16,8 @@ import { SolicitudMaterialComponent } from './solicitud-material/solicitud-mater
 import { ModalEditItemComponent } from './modal-edit-item/modal-edit-item.component';
 import { ModalPartidasComponent } from './modal-partidas/modal-partidas.component';
 import { ModalSubpartidasComponent } from './modal-subpartidas/modal-subpartidas.component';
+import { ModalCategoriasComponent } from './modal-categorias/modal-categorias.component';
+import { ModalItemsComponent } from './modal-items/modal-items.component';
 
 
 @NgModule({
@@ -27,6 +29,8 @@ import { ModalSubpartidasComponent } from './modal-subpartidas/modal-subpartidas
     ModalEditItemComponent,
     ModalPartidasComponent,
     ModalSubpartidasComponent,
+    ModalCategoriasComponent,
+    ModalItemsComponent,
   ],
   imports: [
     BrowserModule,

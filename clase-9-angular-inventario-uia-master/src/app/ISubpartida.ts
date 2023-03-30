@@ -1,5 +1,6 @@
 export interface ISubpartida 
 {
+  categorias: import("c:/Users/Grexcold/Desktop/ARQ2023/clase-9-angular-inventario-uia-master/src/app/IPartida").ICategoria[];
 			id: string,
 			idPartida: string,
             name: string,

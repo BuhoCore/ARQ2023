@@ -16,6 +16,9 @@ import { ModalSubpartidasComponent } from '../modal-subpartidas/modal-subpartida
 
 
 export class ModalPartidasComponent implements OnInit  {
+openDialog6(arg0: string) {
+throw new Error('Method not implemented.');
+}
   partidas: IPartida[] = [];
   pageActual:number=1;
   urlaccion:string = 'assets/icon-tabla/';
@@ -54,8 +57,7 @@ export class ModalPartidasComponent implements OnInit  {
     console.log(id)
   }
 
-
-
+  
   GiveDataForm(id: any,accion:string) {
     this.Nav.navigate(['solicitudMaterial']);
         console.log("id"+id);
@@ -84,6 +86,17 @@ export class ModalPartidasComponent implements OnInit  {
         break;
     }
   }
+
+  openDialogDetails3(id:string) {
+    console.log("id:"+id);
+    this.datosPartida.setIdPartidas(id);
+    const dialogRef = this.dialog.open(ModalSubpartidasComponent);
+  
+    dialogRef.afterClosed().subscribe((result: any) => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+  
   }
        
   

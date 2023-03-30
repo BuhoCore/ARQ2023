@@ -1,5 +1,4 @@
-<p>modal-subpartidas works!</p>
-
+<p>modal-items works!</p>
 
 <div id="table" class="container marginT">
     <table style="width: 100%;"
@@ -97,16 +96,28 @@
       </thead>
   
       <tbody>
-        <tr *ngFor="let data of subpartidas  ">
-          <td style="width: 5%;">{{data.idSubpartida }}</td>
-          <td style="width: 8%;">{{data.id}}</td>
-          <td style="width: 10%;">{{data.name}} </td>
+        <tr *ngFor="let data of items ">
+            <td>{{data.id}}</td>
+            <td style="width: 5%;">{{data.id }}</td>
+            <td style="width: 5%;">{{data.name}}</td>
+            <td style="width: 5%;">{{data.nameSubpartida}}</td>
+            <td style="width: 10%;">{{data.nameCategoria}}</td>
+    
+
 
           <td style="width: 15%;">  
            
-            <button (click)="openDialogNew4(data.idSubpartida)" class="btn btn-primary btn-sm " type="button">
-              <span class="glyphicon glyphicon-search"></span><mat-icon>shopping_cart</mat-icon>
-            </button>    
+            <label>
+
+              <input type="checkbox" [value]="data.id"(change)="onCheckboxChange($event)"/>
+              {{data.name}}}
+
+            </label>
+            
+            <button type="submit">sumbit</button>
+            
+           
+       
            
             </td>
         </tr>

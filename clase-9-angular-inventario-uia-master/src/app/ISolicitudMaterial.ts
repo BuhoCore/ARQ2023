@@ -9,6 +9,7 @@ export interface ISolicitudMaterial
     nameItem: string,
     idCategoria: string,
     nameCategoria: string,
+    nameSubpartida: string,
     nameLote: string,
     cantidad: string,
     idProveedor: string,

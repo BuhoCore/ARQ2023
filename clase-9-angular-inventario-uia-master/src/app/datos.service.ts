@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { IPartida } from './IPartida';
+import { ICategoria, IPartida } from './IPartida';
 import { ISolicitudMaterial } from './ISolicitudMaterial';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ISubpartida } from './ISubpartida';
@@ -13,25 +13,30 @@ export class DatosService {
 
   solicitudesArchivoURL: string = '/assets/solicitudesMaterial.json';
   partidasArchivoURL: string = '/assets/partidas.json';
-  subPartidasArchivoURL: string = '/assets/subPartidas.json';
   
   private idSolicitud: string = "";
   private idSolicitud$ = new BehaviorSubject<string>("");
+
+  private idPartidas: string = "";
+  private idPartidas$ = new BehaviorSubject<string>("");
+
+  private idSubpartidas: string = "";
+  private idSubpartidas$= new BehaviorSubject<string>("");
+
+  private idCategorias: string = "";
+  private idCategorias$ = new BehaviorSubject<string>("");
+
+
   
   private solicitudesMaterial = new Observable<ISolicitudMaterial[]>();
   private partidas = new Observable<IPartida[]>();
-  private subPartidas = new Observable<ISubpartida[]>();
+
+  private subpartidas = new Observable<ISubpartida[]>();
+  private categorias = new Observable<ICategoria[]>();
 
   constructor(private http: HttpClient) 
   {     
     this.idSolicitud = ""   
-  }
-
-
-
-  getSubpartidas(): Observable<ISubpartida[]> {
-    this.subPartidas = this.http.get<ISubpartida[]>(this.subPartidasArchivoURL);
-    return this.subPartidas;    
   }
  
   getSolicitudesMaterial(): Observable<ISolicitudMaterial[]> {
@@ -53,4 +58,30 @@ export class DatosService {
   getIdSolicitudMaterial(): string {
     return this.idSolicitud;
   } 
-}
+
+  getIdPartidas(): string {
+    return this.idPartidas;
+  }
+  setIdPartidas(id:string){
+    this.idPartidas=id;
+    this.idPartidas$.next(this.idPartidas);
+  }
+
+  getIdSubpartidas(): string {
+    return this.idSubpartidas;
+  }
+  setIdSubpartidas(id:string){
+    this.idSubpartidas=id;
+    this.idSubpartidas$.next(this.idSubpartidas);
+  }
+
+  getIdCategorias(): string {
+    return this.idCategorias;
+  }
+  setIdCategorias(id:string){
+    this.idCategorias=id;
+    this.idCategorias$.next(this.idCategorias);
+  }
+  
+  }
+

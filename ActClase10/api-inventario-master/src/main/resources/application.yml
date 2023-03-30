@@ -16,7 +16,7 @@ spring:
     database: inventario
     authentication:
       username: neo4j
-      password: root
+      password: root1234
 
 
 
