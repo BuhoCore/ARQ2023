@@ -28,6 +28,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { EntregaMaterialComponent } from './entrega-material/entrega-material.component';
 import { PartidasComponent } from './partidas/partidas.component';
 import {MatMenuModule} from '@angular/material/menu';
+import { EntregaPartidaComponent } from './entrega-partida/entrega-partida.component';
+import { SolicitudEntregaComponent } from './solicitud-entrega/solicitud-entrega.component';
+import { EngresasolicitudMaterialComponent } from './engresasolicitud-material/engresasolicitud-material.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +45,9 @@ import {MatMenuModule} from '@angular/material/menu';
     ModalItemsComponent,
     EntregaMaterialComponent,
     PartidasComponent,
+    EntregaPartidaComponent,
+    SolicitudEntregaComponent,
+    EngresasolicitudMaterialComponent,
 
   ],
   imports: [

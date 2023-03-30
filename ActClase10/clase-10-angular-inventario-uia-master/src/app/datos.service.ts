@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { IIngreso, IPartida } from './IPartida';
+import { IIngreso, IIngresoPartidas, IPartida } from './IPartida';
 import { ISolicitudMaterial } from './ISolicitudMaterial';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map, tap, catchError } from "rxjs/operators";
@@ -111,6 +111,14 @@ public agregaIngreso(Ingreso: IIngreso): Observable<IIngreso>  {
     catchError(this.handleError<IIngreso>('addIngreso'))
   );
 }
+
+public agregaIngresoPartida(Ingreso: IIngresoPartidas): Observable<IIngresoPartidas>  {
+  return this.http.post<IIngresoPartidas>(this.partidasUrl, Ingreso, this.httpOptions).pipe(
+    tap((newIngresoPar: IIngresoPartidas) => console.log(`added Ingreso w/ name=${newIngresoPar.name}`)),
+    catchError(this.handleError<IIngresoPartidas>('addIngreso'))
+  );
+}
+
 
 
 

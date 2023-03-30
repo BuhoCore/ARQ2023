@@ -9,23 +9,63 @@
       <mat-toolbar-row>
                 <div class="pull-right">                  
                   <button color="primary" style="color:'#148ab8';font-size: 18px;" mat-button [matMenuTriggerFor]="menu">Partidas</button>
+
+
                       <mat-menu #menu="matMenu">
                         <button mat-raised-button color="primary">
                           <a style="color:'#148ab8';font-size: 18px;" mat-button [routerLink]="'/consultaPartidas'"> Consulta</a>
                         </button>
                         <button mat-raised-button color="primary">
-                          <a style="color:'#148ab8';font-size: 18px;" mat-button [routerLink]="'/nuevasPartidas'">Nuevas</a>
+                          <a style="color:'#148ab8';font-size: 18px;" mat-button [routerLink]="'/ingresoPartidas'">Nuevas</a>
                         </button>
                   </mat-menu>
+
+
                   <button mat-raised-button color="primary">
-                    <a style="color:'#f6bd16'; font-size: 18px;" mat-button [routerLink]="'/solicitudesMaterial'"> Solicitudes Material</a>
+                    <a style="color:'#f6bd16'; font-size: 18px;" mat-button [matMenuTriggerFor]="menu2"> Solicitudes Material</a>
                   </button>
+                  <mat-menu #menu2="matMenu">
+                    <button mat-raised-button color="primary">
+                      <a style="color:'#148ab8';font-size: 18px;" mat-button [routerLink]="'/consultasolicitudesMaterial'"> Consulta Solicitudes Material</a>
+                    </button>
+                    <button mat-raised-button color="primary">
+                      <a style="color:'#148ab8';font-size: 18px;" mat-button [routerLink]="'/nuevassolicitudesMaterial'">Nuevas Solicitudes Material</a>
+                    </button>
+              </mat-menu>
+
+
                   <button mat-raised-button color="primary">
-                    <a style="color:'#51c7bb'; font-size: 18px;" mat-button [routerLink]="'/solicitudesEntregadas'"> Solicitudes Entregadas</a>
+                    <a style="color:'#51c7bb'; font-size: 18px;" mat-button [matMenuTriggerFor]="menu3"> Solicitudes Entregadas</a>
                   </button>
+
+                  <mat-menu #menu3="matMenu">
+                    <button mat-raised-button color="primary">
+                      <a style="color:'#148ab8';font-size: 18px;" mat-button [routerLink]="'/solicitudEntrega'"> Consulta solicitudesEntregadas</a>
+                    </button>
+                    <button mat-raised-button color="primary">
+                      <a style="color:'#148ab8';font-size: 18px;" mat-button [routerLink]="'/nuevassolicitudesEntregadas'">Nuevas solicitudesEntregadas</a>
+                    </button>
+              </mat-menu>
+
+
                   <button mat-raised-button color="primary">
-                    <a style="color:'#5AA454';font-size: 18px;" mat-button [routerLink]="'/ingresos'"> Ingresos de Material</a>
+                    <a style="color:'#5AA454';font-size: 18px;" mat-button [matMenuTriggerFor]="menu4"> Ingresos de Material</a>
                   </button>
+
+                  <mat-menu #menu4="matMenu">
+                    <button mat-raised-button color="primary">
+                      <a style="color:'#148ab8';font-size: 18px;" mat-button [routerLink]="'/consultasolicitudesEntregadas'"> Consulta ingresos</a>
+                    </button>
+                    <button mat-raised-button color="primary">
+                      <a style="color:'#148ab8';font-size: 18px;" mat-button [routerLink]="'/consultangreso'">Nuevas ingresos</a>
+                    </button>
+              </mat-menu>
+
+
+         
+
+
+
                     </div>
             </mat-toolbar-row>
           </div>

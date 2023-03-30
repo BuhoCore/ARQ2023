@@ -15,6 +15,17 @@ export interface IIngreso
       idProveedor: string; 
   }
 
+  export interface IIngresoPartidas 
+{
+			idPartida: string,
+      name: string,
+      idSubpartida: string,
+      nameSubpartida: string,
+      idCategoria: string,
+      nameCategoria: string,
+      minimoNivel: number,
+  }
+
 export interface IPartida 
 {
 			id: string,
