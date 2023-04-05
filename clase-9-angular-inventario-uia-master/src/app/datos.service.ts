@@ -13,10 +13,12 @@ export class DatosService {
 
   solicitudesArchivoURL: string = '/assets/solicitudesMaterial.json';
   partidasArchivoURL: string = '/assets/partidas.json';
+  subpartidasArchivoURL: string = '/assets/subpartidas.json';
   
   private idSolicitud: string = "";
   private idSolicitud$ = new BehaviorSubject<string>("");
 
+  
   private idPartidas: string = "";
   private idPartidas$ = new BehaviorSubject<string>("");
 
@@ -26,13 +28,17 @@ export class DatosService {
   private idCategorias: string = "";
   private idCategorias$ = new BehaviorSubject<string>("");
 
+  
+  private idItems: string = "";
+  private idItems$ = new BehaviorSubject<string>("");
+
 
   
   private solicitudesMaterial = new Observable<ISolicitudMaterial[]>();
   private partidas = new Observable<IPartida[]>();
-
   private subpartidas = new Observable<ISubpartida[]>();
-  private categorias = new Observable<ICategoria[]>();
+
+
 
   constructor(private http: HttpClient) 
   {     
@@ -47,6 +53,11 @@ export class DatosService {
   getPartidas(): Observable<IPartida[]> {
     this.partidas = this.http.get<IPartida[]>(this.partidasArchivoURL);
     return this.partidas;
+  }
+
+  getSubartidas(): Observable<ISubpartida[]> {
+    this.subpartidas = this.http.get<ISubpartida[]>(this.subpartidasArchivoURL);
+    return this.subpartidas;
   }
 
   setIdSolicitud(id:string)
@@ -81,6 +92,15 @@ export class DatosService {
   setIdCategorias(id:string){
     this.idCategorias=id;
     this.idCategorias$.next(this.idCategorias);
+  }
+
+  getIdItems(): string {
+    return this.idItems;
+  }
+
+  setIdItems(id:string){
+    this.idItems=id;
+    this.idItems$.next(this.idItems);
   }
   
   }

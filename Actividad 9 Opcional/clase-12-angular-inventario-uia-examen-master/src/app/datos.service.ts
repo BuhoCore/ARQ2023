@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { IIngreso, IIngresoPartidas, IPartida, ISubpartida } from './IPartida';
-import { ISolicitudMaterial } from './ISolicitudMaterial';
+import { IIngreso, IPartida } from './IPartida';
+import { IItem, ISolicitudMaterial } from './ISolicitudMaterial';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map, tap, catchError } from "rxjs/operators";
 
@@ -11,12 +11,15 @@ import { map, tap, catchError } from "rxjs/operators";
 export class DatosService {
   
   
+  
+  
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
   partidasUrl = "http://localhost:8080/inventario/Partidas";
   solicitudesArchivoURL: string = '/assets/solicitudesMaterial.json';
+  solicitudesUrl = "http://localhost:8080/inventario/SolicitudMaterial";
   
   private idSolicitud: string = "";
   private idSolicitud$ = new BehaviorSubject<string>("");
@@ -33,13 +36,17 @@ export class DatosService {
   private solicitudesMaterial = new Observable<ISolicitudMaterial[]>();
   private partidas = new Observable<IPartida[]>();
 
+
+  private itemsCarrito: IItem[] = [];
+  private itemsCarrito$ = new BehaviorSubject<IItem[]>([]);
+
   constructor(private http: HttpClient) 
   {     
     this.idSolicitud = ""   
   }
  
   getSolicitudesMaterial(): Observable<ISolicitudMaterial[]> {
-    this.solicitudesMaterial = this.http.get<ISolicitudMaterial[]>(this.solicitudesArchivoURL);
+    this.solicitudesMaterial = this.http.get<ISolicitudMaterial[]>(this.solicitudesUrl);
     return this.solicitudesMaterial;    
   }
 
@@ -84,22 +91,51 @@ export class DatosService {
   }
 
 
+  setItemCarrito(item:IItem)
+  {
+    this.itemsCarrito.push(item);
+    this.itemsCarrito$.next(this.itemsCarrito);
+  }
+
+
+  unsetItemCarrito(id: string) 
+  {
+    let newItemsCarrito: IItem[] = [];
+    this.itemsCarrito$ = new BehaviorSubject<IItem[]>([]);
+    this.itemsCarrito.forEach(p=>
+      {
+        if(id !== p.id)
+          newItemsCarrito.push(p);
+      })
+    this.itemsCarrito=newItemsCarrito;
+    this.itemsCarrito$.next(this.itemsCarrito);
+  }
+
+  limpiaCarrito() 
+  {
+    let newItemsCarrito: IItem[] = [];
+    this.itemsCarrito = newItemsCarrito;
+    this.itemsCarrito$ = new BehaviorSubject<IItem[]>([]);
+  }
+
+  getItemsCarrito$(): Observable<IItem[]> {
+    return this.itemsCarrito$;    
+  }
+
+  getItemsCarrito(): IItem[] 
+  {
+    return this.itemsCarrito;    
+  }
+
+  
+
+
   public getPartidas()
   {
        return this.http.get<IPartida[]>(this.partidasUrl)
       .pipe(
         tap(_ => console.log('extrayendo Partidas')),
       catchError(this.handleError<IPartida[]>('loadPartidas', []))
-    );
-  }
-
-  
-  public getIngresoPartidas()
-  {
-       return this.http.get<IIngresoPartidas[]>(this.partidasUrl)
-      .pipe(
-        tap(_ => console.log('extrayendo Ingreso Partidas')),
-      catchError(this.handleError<IIngresoPartidas[]>('loadIngresoPartidas', []))
     );
   }
   
@@ -122,15 +158,23 @@ public agregaIngreso(Ingreso: IIngreso): Observable<IIngreso>  {
   );
 }
 
-public agregaIngresoPartida(Ingreso: IIngresoPartidas): Observable<IIngresoPartidas>  {
-  return this.http.post<IIngresoPartidas>(this.partidasUrl, Ingreso, this.httpOptions).pipe(
-    tap((newIngresoPar: IIngresoPartidas) => console.log(`added Ingreso w/ name=${newIngresoPar.name}`)),
-    catchError(this.handleError<IIngresoPartidas>('addIngreso'))
+
+enviaNewSolicitud(solicitud:ISolicitudMaterial) 
+{
+  return this.http.post<ISolicitudMaterial>(this.solicitudesUrl, solicitud, this.httpOptions).pipe(
+    tap((newSolicitudMaterial: ISolicitudMaterial) => console.log(`added SolicitudMaterial w/ name=${newSolicitudMaterial.name}`)),
+    catchError(this.handleError<ISolicitudMaterial>('addSolicitudMaterial'))
   );
 }
 
 
 
-
+    /** POST: add a new Ingreso to the server */
+    public agregaPartida(Partida: IPartida): Observable<IPartida>  {
+      return this.http.post<IPartida>(this.partidasUrl, Partida, this.httpOptions).pipe(
+        tap((newPartida: IPartida) => console.log(`added Partida w/ name=${newPartida.name}`)),
+        catchError(this.handleError<IPartida>('addPartida'))
+      );
+    }
 
 }

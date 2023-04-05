@@ -1,13 +1,11 @@
-
-
-import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
-import { Router } from '@angular/router';
-import { DatosService } from '../datos.service';
-
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ISubpartida } from '../ISubpartida';
-import { IPartida } from '../IPartida';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatPaginator, PageEvent} from '@angular/material/paginator';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { DatosService } from '../datos.service'
+import { IPartida, ISubpartida }  from '../IPartida'
+import { Router } from '@angular/router';
 import { ModalCategoriasComponent } from '../modal-categorias/modal-categorias.component';
 
 @Component({
@@ -36,7 +34,7 @@ export class ModalSubpartidasComponent implements OnInit  {
  
    constructor(public datosPartida:DatosService,  public modal: MatDialog) 
    {     
-    this.idPartida = this.datosPartida.getIdPartidas();
+    this.idPartida = this.datosPartida.getIdPartida();
 
     this.datosPartida.getPartidas().subscribe((data: IPartida[])=>{
       console.log(data);
@@ -54,7 +52,7 @@ export class ModalSubpartidasComponent implements OnInit  {
                 
    ngOnInit(): void {
                 
-    this.idPartida = this.datosPartida.getIdPartidas();
+    this.idPartida = this.datosPartida.getIdPartida();
 
     this.datosPartida.getPartidas().subscribe((data: IPartida[])=>{
       console.log(data);
@@ -69,10 +67,13 @@ export class ModalSubpartidasComponent implements OnInit  {
     })
    }
 
-   openDialogNew4(id:string) {
+   openDialogNew(id:string) {
     console.log("id:"+id);
-    this.datosPartida.setIdSubpartidas(id);
-    const dialogRef = this.modal.open(ModalCategoriasComponent);
+    this.datosPartida.setIdSubpartida(id);
+    const dialogRef = this.modal.open(ModalCategoriasComponent, {
+      autoFocus: false,
+      maxHeight: '90vh' //you can adjust the value as per your view
+  });
   
     dialogRef.afterClosed().subscribe((result: any) => {
       console.log(`Dialog result: ${result}`);
@@ -81,4 +82,4 @@ export class ModalSubpartidasComponent implements OnInit  {
   
   }
        
-    
+  
