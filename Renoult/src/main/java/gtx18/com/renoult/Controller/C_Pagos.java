@@ -1,50 +1,68 @@
 package gtx18.com.renoult.Controller;
 
-import gtx18.com.renoult.DTO.Tab_Pago;
-import gtx18.com.renoult.Repository.RepositoryPago;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.Environment;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-import javax.sql.DataSource;
+import gtx18.com.renoult.DTO.Tab_PagoDTO;
+import gtx18.com.renoult.Repository.RepositoryPago;
+import gtx18.com.renoult.Service.ServicePagos;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+
 import java.util.List;
-import java.util.Map;
+import java.util.Optional;
 
 @Configuration
-public class C_Conexion {
+public class C_Pagos {
 
-    @RestController
-    public class C_C_Controller {
-        @Autowired
+      @RestController
+      @RequestMapping("/app")
+      public class C_C_Pagos {
 
-        private RepositoryPago tuPagoRepository;
-        private JdbcTemplate jdbcTemplate;
-        @GetMapping("/pago")
+            @RestController
+            public class TuTablaController {
 
-        public List<Map<String, Object>> getTuTabla() {
-            String query = "SELECT * FROM tu_tabla";
-            List<Map<String, Object>> pago = jdbcTemplate.queryForList(query);
+                  @Autowired
+                  private ServicePagos servicePagos;
+                  private final RepositoryPago RepositoryPago;
 
-            return pago;
-        }
-        /*
-         @GetMapping("/tu_tabla/texto/{texto}")
-    public List<TuTabla> getTuTablaPorTexto(@PathVariable("texto") String texto) {
-        return tuTablaRepository.findByTexto(texto);
-    }
+                    public TuTablaController(RepositoryPago RepositoryPago) {
+                         this.RepositoryPago = RepositoryPago;
+                    }
 
-    @PostMapping("/tu_tabla")
-    public TuTabla guardarTuTabla(@RequestBody TuTabla tuTabla) {
-        return tuTablaRepository.save(tuTabla);
-    }
 
-        */
 
-        // otros métodos para manejar otras solicitudes HTTP (por ejemplo, POST, PUT, DELETE)
-    }
+                  @GetMapping("/pago")
+                  public List<Tab_PagoDTO> getAll() {
+                        return servicePagos.getPagos();
+                  }
+
+                  @GetMapping("/pago/{id}")
+                  public Optional<Tab_PagoDTO> getById(@PathVariable("id") Long id) {
+                        return servicePagos.getPago(id);
+                  }
+
+
+                  @PostMapping("/pago/save")
+                  public void saveUpdate(@RequestBody Tab_PagoDTO pago) {
+                        servicePagos.saveOrUpdatePago(pago);
+                  }
+
+                  @DeleteMapping("/pago/delete/{id}")
+                  public void saveUpdate(@PathVariable("id") Long id) {
+                        servicePagos.delete(id);
+                  }
+
+
+                  @GetMapping("/my")
+                  public String m(Model model) {
+                        List<Tab_PagoDTO> pagos = RepositoryPago.findAll();
+                        model.addAttribute("pagos", pagos);
+                        return "Pagos.html";
+                  }
+            }
+
+      }
 
 }

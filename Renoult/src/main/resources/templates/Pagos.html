@@ -1,10 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+       <meta charset="UTF-8">
+       <title>Pagos777</title>
 </head>
 <body>
-$END$
+<h1>Listado de Pagos</h1>
+<table>
+       <thead>
+       <tr>
+              <th>id</th>
+              <th>num_pago</th>
+              <th>fecha</th>
+              <th>dinero</th>
+              <th>mensaje</th>
+       </tr>
+       </thead>
+       <tbody>
+       <tr th:each="pago: ${pagos}">
+              <td th:text="${pago.id}"></td>
+              <td th:text="${pago.num_pago}"></td>
+              <td th:text="${pago.fecha}"></td>
+              <td th:text="${pago.dinero}"></td>
+              <td th:text="${pago.mensaje}"></td>
+       </tr>
+       </tbody>
+</table>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
