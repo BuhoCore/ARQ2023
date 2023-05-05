@@ -12,6 +12,10 @@ import { Router } from '@angular/router';
 import { IItem, ISolicitudMaterial } from '../ISolicitudMaterial';
 import { SolicitudMaterialComponent } from '../solicitud-material/solicitud-material.component';
 import { ModalRevisaBajasComponent } from '../modal-revisa-bajas/modal-revisa-bajas.component';
+import { ModalEditItemComponent } from '../modal-edit-item/modal-edit-item.component';
+import { ModalPartidasComponent } from '../modal-partidas/modal-partidas.component';
+import { ModalCategoriasComponent } from '../modal-categorias/modal-categorias.component';
+import { ModalItemsComponent } from '../modal-items/modal-items.component';
 
 
 @Component({
@@ -60,7 +64,7 @@ export class ItemsNewBajaMaterialComponent {
   openDialogDetails(id:string) {
     console.log("id:"+id);
     this.datosPartida.setIdPartida(id);
-    const dialogRef = this.modal.open(ModalRevisaBajasComponent, {
+    const dialogRef = this.modal.open(ModalItemsComponent, {
       autoFocus: false,
       maxHeight: '90vh' //you can adjust the value as per your view
   });

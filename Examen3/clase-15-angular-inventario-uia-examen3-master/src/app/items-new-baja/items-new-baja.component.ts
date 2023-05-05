@@ -1,24 +1,25 @@
-import { Component, ViewChild } from '@angular/core';
 
+
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, FormControl, Validators, FormArray} from '@angular/forms';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatPaginator, PageEvent} from '@angular/material/paginator';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
-import { DatosService } from '../datos.service';
-import { IItem, ISolicitudMaterial } from '../ISolicitudMaterial';
-import { ModalEditItemComponent } from '../modal-edit-item/modal-edit-item.component';
-import { ModalEditComponent } from '../modal-edit/modal-edit.component';
-import { ModalItemsComponent } from '../modal-items/modal-items.component';
-import { ModalDetailsComponent } from '../modal-details/modal-details.component';
-import { ModalRevisaPartidasComponent } from '../modal-revisa-partidas/modal-revisa-partidas.component';
-import { ICategoria, IPartida, ISubpartida } from '../IPartida';
-import { FormGroup } from '@angular/forms';
+import { DatosService } from '../datos.service'
+import { ICategoria, IPartida, ISubpartida }  from '../IPartida'
 import { Router } from '@angular/router';
-import { MatPaginator } from '@angular/material/paginator';
+import { IItem } from '../ISolicitudMaterial';
+
 
 @Component({
-  selector: 'app-modal-revisa-bajas',
-  templateUrl: './modal-revisa-bajas.component.html',
-  styleUrls: ['./modal-revisa-bajas.component.css']
+  selector: 'app-items-new-baja',
+  templateUrl: './items-new-baja.component.html',
+  styleUrls: ['./items-new-baja.component.css']
 })
-export class ModalRevisaBajasComponent {  
+export class ItemsNewBajaComponent {
+
+
   pageActual:number=1;
   public pageSizes = 5;
   public paginaActual = 0;
@@ -156,6 +157,9 @@ export class ModalRevisaBajasComponent {
     }
 
   }
+
+  
+  
     
   submit(){
     

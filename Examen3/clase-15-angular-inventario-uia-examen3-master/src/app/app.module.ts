@@ -41,6 +41,7 @@ import { ConsultaBajaComponent } from './consulta-baja/consulta-baja.component';
 import { NewBajaComponent } from './new-baja/new-baja.component';
 import { ModalRevisaBajasComponent } from './modal-revisa-bajas/modal-revisa-bajas.component';
 import { ItemsNewBajaMaterialComponent } from './items-new-baja-material/items-new-baja-material.component';
+import { ItemsNewBajaComponent } from './items-new-baja/items-new-baja.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { ItemsNewBajaMaterialComponent } from './items-new-baja-material/items-n
     NewBajaComponent,
     ModalRevisaBajasComponent,
     ItemsNewBajaMaterialComponent,
+    ItemsNewBajaComponent,
 
   ],
   imports: [

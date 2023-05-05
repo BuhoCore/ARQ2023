@@ -9,7 +9,6 @@ import { map, tap, catchError } from "rxjs/operators";
   providedIn: 'root',
 })
 export class DatosService {
- 
   
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -187,6 +186,13 @@ export class DatosService {
     this.itemsEntregar$ = new BehaviorSubject<IItem[]>([]);
   }
 
+  limpiaBaja() {
+    let newItemsEntregar: IItem[] = [];
+    this.itemsEntregar = newItemsEntregar;
+    this.itemsEntregar$ = new BehaviorSubject<IItem[]>([]);
+
+  }
+
   setItemsEntregar(items: IItem[]) 
   {
     this.itemsEntregar = items;
@@ -205,10 +211,6 @@ export class DatosService {
   }
 
   
-
-
-
-
   public getPartidas()
   {
        return this.http.get<IPartida[]>(this.partidasUrl)
